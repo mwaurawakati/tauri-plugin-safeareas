@@ -305,6 +305,66 @@
           "const": "deny-ping"
         },
         {
+          "description": "Enables the set command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set"
+        },
+        {
+          "description": "Denies the set command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set"
+        },
+        {
+          "description": "Enables the set_bottom_bar_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-bottom-bar-color"
+        },
+        {
+          "description": "Denies the set_bottom_bar_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-bottom-bar-color"
+        },
+        {
+          "description": "Enables the set_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-color"
+        },
+        {
+          "description": "Denies the set_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-color"
+        },
+        {
+          "description": "Enables the set_top_ command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-top-"
+        },
+        {
+          "description": "Denies the set_top_ command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-top-"
+        },
+        {
+          "description": "Enables the set_top_bar command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-top-bar"
+        },
+        {
+          "description": "Denies the set_top_bar command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-top-bar"
+        },
+        {
+          "description": "Enables the set_top_bar_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-top-bar-color"
+        },
+        {
+          "description": "Denies the set_top_bar_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-top-bar-color"
+        },
+        {
           "description": "Default permissions for the plugin",
           "type": "string",
           "const": "default"

@@ -1,4 +1,4 @@
-package cc.cinea.safeareas
+package com.plugin.safeareas
 
 import android.app.Activity
 import app.tauri.annotation.Command
