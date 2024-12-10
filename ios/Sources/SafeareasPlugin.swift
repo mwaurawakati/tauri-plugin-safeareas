@@ -140,30 +140,38 @@ class SafeareasPlugin: Plugin {
     }
 
     @objc public func setTopBarColor(_ invoke: Invoke) throws {
-        let args = try invoke.parseArgs(SetColorArgs.self)
-        
-        guard let color = UIColor(colorString: args.input) else {
-            invoke.reject("Invalid color format.")
-            return
-        }
-        
-        DispatchQueue.main.async {
-            if let ws = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let window = ws.windows.first {
-                // Status bar color
-                if let existingStatusBar = window.viewWithTag(MAGIC_NUMBER) {
-                    existingStatusBar.backgroundColor = color
-                } else if let statusBarManager = ws.statusBarManager {
-                    let statusBar = UIView(frame: statusBarManager.statusBarFrame.insetBy(dx: 0, dy: -8))
-                    statusBar.backgroundColor = color
-                    statusBar.tag = MAGIC_NUMBER
-                    window.addSubview(statusBar)
-                }
-            }
-        }
-        
-        invoke.resolve()
+    let args = try invoke.parseArgs(SetColorArgs.self)
+    
+    guard let color = UIColor(colorString: args.input) else {
+        invoke.reject("Invalid color format.")
+        return
     }
+    
+    DispatchQueue.main.async {
+        if let ws = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = ws.windows.first {
+            
+            let topBarTag = MAGIC_NUMBER
+            
+            // Remove any existing status bar view
+            if let existingStatusBar = window.viewWithTag(topBarTag) {
+                existingStatusBar.removeFromSuperview()
+            }
+            
+            // Add a new status bar view
+            let topSafeArea = window.safeAreaInsets.top
+            let statusBar = UIView(frame: CGRect(x: 0, y: 0, width: window.frame.width, height: topSafeArea))
+            statusBar.backgroundColor = color
+            statusBar.tag = topBarTag
+            
+            window.addSubview(statusBar)
+            window.bringSubviewToFront(statusBar)
+        }
+    }
+    
+    invoke.resolve()
+}
+
     
     @objc public func setBottomBarColor(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(SetColorArgs.self)
