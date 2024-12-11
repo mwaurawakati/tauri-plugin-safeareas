@@ -27,3 +27,11 @@ pub(crate) async fn set_bottom_bar_color<R: Runtime>(
 ) -> Result<()> {
     app.safeareas().set_top_bar_color(payload)
 }
+
+#[command]
+pub(crate) async fn enable_fullscreen_scrolling<R: Runtime>(
+    app: AppHandle<R>,
+    payload: SetColorRequest,
+) -> Result<()> {
+    app.safeareas().set_top_bar_color(payload)
+}

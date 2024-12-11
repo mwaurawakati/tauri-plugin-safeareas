@@ -46,4 +46,10 @@ impl<R: Runtime> Safeareas<R> {
       .map_err(Into::into)
   }
   
+  pub fn enable_fullscreen_scrolling(&self, payload: SetColorRequest) -> crate::Result<()> {
+    self
+      .0
+      .run_mobile_plugin("enableFullscreenScrolling", payload)
+      .map_err(Into::into)
+  }
 }

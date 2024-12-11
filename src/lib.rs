@@ -35,7 +35,7 @@ impl<R: Runtime, T: Manager<R>> crate::SafeareasExt<R> for T {
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
   Builder::new("safeareas")
-    .invoke_handler(tauri::generate_handler![commands::set_color, commands::set_top_bar_color, commands::set_bottom_bar_color])
+    .invoke_handler(tauri::generate_handler![commands::set_color, commands::set_top_bar_color, commands::set_bottom_bar_color, commands::enable_fullscreen_scrolling])
     .setup(|app, api| {
       #[cfg(mobile)]
       let safeareas = mobile::init(app, api)?;
